@@ -1,24 +1,40 @@
 public class BirdUpgrade {
 
     public static void main(String[] args) {
-        ActionBird ac = new ActionBird("Sun", "male", 19, 20);
-        ActionBird ac1 = new ActionBird("Deer", "female", 20, 50);
+        ActionBird b1 = new ActionBird("Jack", "male", 19, 10);
+        ActionBird b2 = new ActionBird("Yulie", "female", 20, 15);
+        ActionBird b3 = new ActionBird("Jummie", "male", 10, 15);
 
-        System.out.print("Bird is : " + ac.getName() + "\nGender : " + ac.getGender() + "\nAge : " + ac.getAge() + " years" + "\nWeight: " + ac.getWeight() + " gram");
+        System.out.print("Bird is : " + b1.getName() + "\nGender : " + b1.getGender() + "\nAge : " + b1.getAge() + " years" + "\nWeight: " + b1.getWeight() + " gram");
         System.out.print("\n\n=== Select bird action ===\n1. Talk repeat\n2. Eat food (gram)\n3. poop\n4. breed\n ");
-
-        // choose action bird 
-        ac.talkWithBird("Hello Deer");
-
-        ac.eatFood(10);
-        ac.eatFood(20);
-        // ac.eatFood(30); //Eat too much until diarrhea.
-
-        ac.poop(10);
-
-        ac1.breed(ac);
-        ac.breed(ac1);
-
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 1 with word"); //test case 1 with word
+        b1.talkWithBird("Hi have a good day");
+        b2.talkWithBird("OHAYOOO");
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 2 no word");   //test case 2 no word
+        b2.talkWithBird();
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 3 feed bird"); //test case 3 feed bird
+        b3.eatFood(10); // current weight = 25 && in body = 10
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 4 Poop!"); //test case 4 Poop!
+        b3.poop(5); // current weight = 20 && in body = 5
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(8)+"test case 5 Poop more eat food!"); //test case 5 Poop more eat food!
+        b3.poop(10); // Can not do
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(8)+"test case 6 eat more until Poop away!"); //test case 6 eat more until Poop away!
+        b3.eatFood(30); // current weight = 15 && in body = 0
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 7 b1 breed b2"); //test case 7 b1 breed b2
+        b1.breed(b2); // child name : JY
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 8 b2 breed b1"); //test case 8 b2 breed b1
+        b2.breed(b1); // child name : YJ
+        
+        System.out.println("\n"+"=".repeat(50)+"\n"+" ".repeat(13)+"test case 9 b1 breed b3"); //test case 9 b1 breed b3
+        b1.breed(b3); // Can not do
     }
 
 }
