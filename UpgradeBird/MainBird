@@ -1,0 +1,24 @@
+public class BirdUpgrade {
+
+    public static void main(String[] args) {
+        ActionBird ac = new ActionBird("Sun", "male", 19, 20);
+        ActionBird ac1 = new ActionBird("Deer", "female", 20, 50);
+
+        System.out.print("Bird is : " + ac.getName() + "\nGender : " + ac.getGender() + "\nAge : " + ac.getAge() + " years" + "\nWeight: " + ac.getWeight() + " gram");
+        System.out.print("\n\n=== Select bird action ===\n1. Talk repeat\n2. Eat food (gram)\n3. poop\n4. breed\n ");
+
+        // choose action bird 
+        ac.talkWithBird("Hello Deer");
+
+        ac.eatFood(10);
+        ac.eatFood(20);
+        // ac.eatFood(30); //Eat too much until diarrhea.
+
+        ac.poop(10);
+
+        ac1.breed(ac);
+        ac.breed(ac1);
+
+    }
+
+}
