@@ -1,0 +1,104 @@
+public class ActionBird {
+
+    String name;
+    String gender;
+    String child;
+    //String child;
+    int age;
+    int weight;
+    int birdWeight;
+    int totalWeightInbody = 0;
+    int birdAction;
+    String repeat;
+
+    ActionBird(String name, String gender, int age, int weight) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.weight = weight;
+        birdWeight = weight;
+    }
+
+    String getName() {
+        return this.name;
+    }
+
+    String getGender() {
+        if (gender.equalsIgnoreCase("Male")) {
+            return this.gender;
+        } else if (gender.equalsIgnoreCase("Female")) {
+            return this.gender;
+        }
+        return null;
+    }
+
+    int getAge() {
+        if (age > 0) {
+            return this.age;
+        }
+        return 0;
+    }
+
+    int getWeight() {
+        return this.weight;
+    }
+
+    int birdAction(int birdAction) {
+        this.birdAction = birdAction;
+        return 0;
+    }
+
+    void talkWithBird(String repeat) {
+        System.out.println("--> Bird replie : " + repeat + "\n");
+    }
+
+    void eatFood(int foodWeight) {
+        System.out.println("Weight food to eat = " + foodWeight);
+        totalWeightInbody = totalWeightInbody + foodWeight;
+        System.out.println("current Weight : " + weight);
+        System.out.println("Weight in body : " + totalWeightInbody);
+        if (totalWeightInbody > weight) {
+            System.out.println("Weight in body" + " > " + "current Weight");
+            System.out.println("\n--> Status : Expel waste!!!");
+            weight = birdWeight;
+            totalWeightInbody = 0;
+            System.out.println("current Weight = " + weight + "\n");
+
+        } else {
+            weight = weight + foodWeight;
+            System.out.println("--> current Weight + food = " + weight + "\n");
+        }
+    }
+
+    void poop(int weightWaste) {
+        if (weightWaste <= totalWeightInbody) {
+            totalWeightInbody = totalWeightInbody - weightWaste;
+            weight = weight - weightWaste;
+            System.out.println("--> POOP POOP !!!");
+            System.out.println("weight in body when poop : " + totalWeightInbody);
+            System.out.println("current Weight = " + weight + "\n");
+        } else {
+            System.out.println("Unable to defecate more than body weight.\n");
+        }
+    }
+
+    String breed(ActionBird bird) {
+        if (bird.gender == gender) {
+            System.out.println("--> Can't breed Because of the same gender <--");
+        } else {
+            age = 1;
+            weight = 5;
+            if (bird.gender == "female") {
+                child = name.substring(0, 1) + bird.getName().substring(0, 1);
+                gender = gender;
+                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram\n");
+            } else if (bird.gender == "male") {
+                child = name.substring(0, 1) + bird.getName().substring(0, 1);
+                gender = gender;
+                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram\n");
+            }
+        }
+        return null;
+    }
+
+}
