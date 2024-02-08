@@ -3,11 +3,10 @@ public class ActionBird {
     String name;
     String gender;
     String child;
-    //String child;
     int age;
     int weight;
     int birdWeight;
-    int totalWeightInbody = 0;
+    int totalWeightStomach = 0;
     int birdAction;
     String repeat;
 
@@ -49,53 +48,56 @@ public class ActionBird {
     }
 
     void talkWithBird(String repeat) {
-        System.out.println("--> Bird replie : " + repeat + "\n");
+        System.out.println("--> Bird replie : " + repeat);
+    }
+    void talkWithBird(){
+        System.out.println("--> I'm " + age+" years old");
     }
 
     void eatFood(int foodWeight) {
         System.out.println("Weight food to eat = " + foodWeight);
-        totalWeightInbody = totalWeightInbody + foodWeight;
+        totalWeightStomach = totalWeightStomach + foodWeight;
         System.out.println("current Weight : " + weight);
-        System.out.println("Weight in body : " + totalWeightInbody);
-        if (totalWeightInbody > weight) {
-            System.out.println("Weight in body" + " > " + "current Weight");
+        System.out.println("Weight in Stomach : " + totalWeightStomach);
+        if (totalWeightStomach > weight) {
+            System.out.println("Weight in Stomach" + " > " + "current Weight");
             System.out.println("\n--> Status : Expel waste!!!");
             weight = birdWeight;
-            totalWeightInbody = 0;
-            System.out.println("current Weight = " + weight + "\n");
+            totalWeightStomach = 0;
+            System.out.println("current Weight = " + weight);
 
         } else {
             weight = weight + foodWeight;
-            System.out.println("--> current Weight + food = " + weight + "\n");
+            System.out.println("--> current Weight + food = " + weight);
         }
     }
 
     void poop(int weightWaste) {
-        if (weightWaste <= totalWeightInbody) {
-            totalWeightInbody = totalWeightInbody - weightWaste;
+        if (weightWaste <= totalWeightStomach) {
+            totalWeightStomach = totalWeightStomach - weightWaste;
             weight = weight - weightWaste;
             System.out.println("--> POOP POOP !!!");
-            System.out.println("weight in body when poop : " + totalWeightInbody);
-            System.out.println("current Weight = " + weight + "\n");
+            System.out.println("weight in Stomach when poop : " + totalWeightStomach);
+            System.out.println("current Weight = " + weight);
         } else {
-            System.out.println("Unable to defecate more than body weight.\n");
+            System.out.println("\nUnable to poop more than body weight.\n");
         }
     }
 
     String breed(ActionBird bird) {
         if (bird.gender == gender) {
-            System.out.println("--> Can't breed Because of the same gender <--");
+            System.out.println("--> Can't breed Because of the same gender <--\n");
         } else {
             age = 1;
             weight = 5;
             if (bird.gender == "female") {
                 child = name.substring(0, 1) + bird.getName().substring(0, 1);
                 gender = gender;
-                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram\n");
+                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram");
             } else if (bird.gender == "male") {
                 child = name.substring(0, 1) + bird.getName().substring(0, 1);
                 gender = gender;
-                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram\n");
+                System.out.println("--> Chlid name is " + child + "\nGender : " + gender + "\nAge : " + age + " years" + "\nWeight : " + weight + " gram");
             }
         }
         return null;
