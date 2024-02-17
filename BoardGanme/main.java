@@ -1,12 +1,19 @@
 public class GameBoard {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Board b1 = new Board();
-        b1.moveFigrue("Rora", 1);
-        b1.moveFigrue("Mik", 2);
+        Board b = new Board();
+        b.setBoard();
+        b.showBoard(); 
+        b.movefigure("Mik", 3);    
+        b.showBoard();
+        b.movefigure("Rora", 5); 
+        b.showBoard();
+        b.movefigure("Rora", 8); 
+        b.showBoard();
+        b.movefigure("Mik", 8); 
+        b.showBoard();
+        
     }
-    
+
+   
 }
