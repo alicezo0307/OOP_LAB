@@ -1,49 +1,52 @@
 public class Board {
 
-    public int width = 10; //have 10 column
-    public String board[] = new String[width + 1];
-    public String figures[] = new String[2];
-    public int mv1 = 0;
-    public int mv2 = 0;
-    public String area = "[ ]";
+    public String grid[] = new String[10];
+    Figure f[] = new Figure[2];
 
-    public void Board() {
-        figures[0] = "Rora";
-        figures[1] = "Mik";
-
+    void setBoard() {
+        for (int i = 0; i < grid.length; i++) {
+            grid[i] = "[ ]";
+        }
+        f[0] = new Figure("Mik", 0);
+        f[1] = new Figure("Rora", 1);
+        grid[0] = f[0].nameFigure;
+        grid[1] = f[1].nameFigure;
     }
 
-    void setUpBoard() {
-    }
-
-    void moveFigrue(String figureName, int move) {
-        Board();
-        if (figureName == figures[0]) {
-            mv1 = move;
-            board[mv1] = figures[0];
+    void movefigure(String name, int move) {
+        if (grid[move - 1] != "[ ]") { //check position is dupicate
+            return;
         }
-        if (figureName == figures[1]) {
-            mv2 = move;
-            board[mv2] = figures[1];
-        }
-        
-        if (move > 0 && move <= width) {
-            for (int i = 1; i < width + 1; i++) {
-                board[i] = area;
-            }
-            board[mv1] = figures[0];
-            board[mv2] = figures[1];
-            
-            for (int i = 1; i < width + 1; i++) {
-                    board[move] = figures[1];
-                    
+        if (move > 0 && move <= grid.length) { //default grid is not more than
+            for (int i = 0; i < f.length; i++) {
 
-                System.out.print(board[i] + "\t");
+                if (name == f[i].nameFigure) { //check  figure in setBoard  
+                    grid[f[i].positionFigure] = "[ ]";
+                    f[i].positionFigure = move - 1;
+                    grid[move - 1] = name;
+                }
             }
         } else {
-            System.out.println("\n\nThere is no such position on this board.");
+            System.out.println("\n" + "-".repeat(75));
+            System.out.println("\t\tThere is no such position on this board.\n");
         }
-        //}
+
     }
 
-}
+    void showBoard() {
+
+        for (int i = 0; i < grid.length; i++) {
+            System.out.print(grid[i] + "\t" + ""); 
+            
+        }
+        System.out.println("\n");
+        for (int i = 0; i < f.length; i++) {
+            System.out.print("\t\t\t");
+            f[i].moveDestination();
+        //    f[i].moveDestination(this);
+        }
+        
+        System.out.println();
+        System.out.println("-".repeat(75));
+    }
+
