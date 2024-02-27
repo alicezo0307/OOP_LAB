@@ -1,0 +1,35 @@
+public class FigureVersion2 {
+    String nameFigure;
+    String colorFigure;
+   // int positionFigure[] = new int[2];
+    int positionFigureX;
+    int positionFigureY;
+    
+    
+    void moveDestination(){
+         System.out.print("["+getFigure()+"] Position X : "+ getPositionX()+" | Position Y : "+ getPosiotionY()+"\n");
+    }
+    
+    public FigureVersion2(String name , String color, int positionX, int positionY) {
+        this.nameFigure = name;
+        this.colorFigure = color;
+        this.positionFigureX = positionX;
+        this.positionFigureY = positionY;
+    }
+
+    public String getFigure() {
+        return this.nameFigure + this.colorFigure;
+    }
+    
+    String getColor(){
+        return this.colorFigure;
+    }
+
+    int getPositionX() {
+        return this.positionFigureX+1; 
+    }
+    int getPosiotionY(){
+        return this.positionFigureY+1;
+    }
+
+}
