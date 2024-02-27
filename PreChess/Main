@@ -1,0 +1,19 @@
+public class Pechess {
+
+    public static void main(String[] args) {
+        ChessBoard b = new ChessBoard();
+        b.setBoard();
+        b.showBoard(); 
+        b.freemove("KiBk", a3);    
+        b.showBoard();
+        b.freemove("QuWh", c5); 
+        b.showBoard();
+        b.freemove("KiWh", c5); 
+        b.showBoard();
+        b.freemove("KiWh", a3); 
+        b.showBoard();
+        
+    }
+
+   
+}
