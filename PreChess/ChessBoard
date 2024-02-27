@@ -1,0 +1,82 @@
+public class ChessBoard {
+
+    public String grid[][] = new String[8][8];
+    FigureVersion2 f[] = new FigureVersion2[4];
+
+    char positionRow[] = "abcdefgh".toCharArray();
+
+    void setBoard() {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                grid[i][j] = "[ ]";
+            }
+        }
+        f[0] = new FigureVersion2("Ki", "Wh", 0, 0);
+        f[1] = new FigureVersion2("Qu", "Wh", 0, 1);
+        f[2] = new FigureVersion2("Ki", "Bk", 7, 0);
+        f[3] = new FigureVersion2("Qu", "Bk", 7, 1);
+
+        grid[0][0] = f[0].getFigure();
+        grid[0][1] = f[1].getFigure();
+        grid[7][0] = f[2].getFigure();
+        grid[7][1] = f[3].getFigure();
+    }
+
+    void freeMove(String name, String position) {
+        // set position 
+        char colorFigure[] = name.toCharArray();
+
+        char getposition[] = position.toCharArray();
+        int rowGrid = getposition[0] - 97; // Char to int of ROW
+        int columnGrid = getposition[1] - 49; // Char to int of COLUMN 
+        /*
+        for (int i = 0; i < 8; i++) {
+            if(getposition[0] == positionRow[i]){ // check get position is in positionRow
+            System.out.print(getposition[0]);
+            System.out.print(getposition[1]);
+            System.out.println();  
+        }
+        }
+         */
+
+        if ((columnGrid > 0 && columnGrid <= grid.length) && (rowGrid > 0 && rowGrid <= grid.length)) {     //default grid is not more than
+            for (int i = 0; i < f.length; i++) {
+
+                if (name.equals(f[i].getFigure())) { //check  figure in setBoard  
+
+                    grid[f[i].positionFigureX][f[i].positionFigureY] = "[ ]";
+                    f[i].positionFigureX = columnGrid;
+                    f[i].positionFigureY = rowGrid;
+                    grid[columnGrid][rowGrid] = name; // put figure on board  
+                }
+            }
+        } else {
+            System.out.println("\tThere is no such position on this board.\n");//System.out.println("\t\tThere is no such position on this board.\n");
+        }
+        System.out.println(name+" --> Char Color : " + colorFigure[2]); //present walk
+        System.out.println("\nFigure Color KiWh: " + f[0].getColor());
+        System.out.println("\nFigure Color QuWh: " + f[1].getColor());
+        System.out.println("\nFigure Color KiBk: " + f[2].getColor());
+        System.out.println("\nFigure Color QuBk: " + f[3].getColor());
+    }
+
+    void showBoard() {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                System.out.print(grid[i][j] + "\t");
+            }
+            System.out.println(" ");
+        }
+
+        System.out.println("");
+        for (int i = 0; i < f.length; i++) {
+            System.out.print("\t");
+            f[i].moveDestination();
+
+        }
+        System.out.println();
+        System.out.println("-".repeat(60));
+
+    }
+
+}
